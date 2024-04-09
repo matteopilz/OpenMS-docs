@@ -30,5 +30,5 @@ hidden: True
 ---
 
 Install <knime/knime-installation.md>
-Minimal workflow <knime/minimal-workflow.md>
+knime/minimal-workflow.md
 ```

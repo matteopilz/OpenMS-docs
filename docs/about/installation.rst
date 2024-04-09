@@ -8,6 +8,55 @@ Installation
     installation/installation-on-macos.md
     installation/installation-on-windows.md
 
+Workflow Editor
+---------------
+
+You can run OpenMS TOPP tools from the command line using your custom scripts, or use powerful
+workflow systems designed to make workflow creation and maintenance more fun, find out more in :ref:`workflows`.
+
+.. list-table::
+   :widths: 25 25 25 25
+   :class: borderless only-light
+   :align: center
+
+   * - .. image:: /_images/introduction/KNIMELogoTM.svg
+         :target: ../getting-started/knime-get-started.html
+         :width: 90%
+
+     - .. image:: /_images/introduction/nextflow2014_no-bg.png
+         :target: ../getting-started/nextflow-get-started.html
+         :width: 90%
+
+     - .. image:: /_images/introduction/galaxy_project_logo.png
+         :target: ../getting-started/galaxy-get-started.html
+         :width: 90%
+
+     - .. image:: /_images/introduction/TOPPAS_logo_white.png
+         :target: ../getting-started/toppas-get-started.html
+         :width: 90%
+
+
+.. list-table::
+   :widths: 25 25 25 25
+   :class: borderless only-dark
+   :align: center
+
+   * - .. image:: /_images/introduction/KNIMELogoTM_white.svg
+         :target: ../getting-started/knime-get-started.html
+         :width: 90%
+
+     - .. image:: /_images/introduction/nextflow2014_no-bg-bright.png
+         :target: ../getting-started/nextflow-get-started.html
+         :width: 90%
+
+     - .. image:: /_images/introduction/galaxy_project_logo_white.png
+         :target: ../getting-started/galaxy-get-started.html
+         :width: 90%
+
+     - .. image:: /_images/introduction/TOPPAS_logo_dark.png
+         :target: ../getting-started/toppas-get-started.html
+         :width: 90%
+
 
 Graphical and Command-Line Tools
 --------------------------------
@@ -41,7 +90,3 @@ from the items below.
         :columns: 4
 
         Installation on Windows
-
-
-.. include:: /getting-started/workflows.rst
-

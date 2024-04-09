@@ -80,4 +80,4 @@ Join the OpenMS Community
 
 To thrive, the OpenMS project needs your expertise and enthusiasm. Not a coder? Not a problem! There are many ways to contribute to OpenMS.
 
-If you are interested in becoming a OpenMS contributor (yay!) we recommend checking out our [Contribute](https://openms.de/contribute/) page.
+If you are interested in becoming a OpenMS contributor (yay!) we recommend checking out our [Contribute](/manual/contribute.md) page.
