@@ -145,19 +145,19 @@ de novo peptide sequencing
   A peptide’s amino acid sequence is inferred directly from the precursor peptide mass and tandem mass spectrum ({term}`MS/MS` or {term}`MS^3`) fragment ions, without comparison to a reference proteome.
 
 TOPPAS
-  An graphical user interface (GUI), which is shipped with OpenMS, to create and execute worflows using {term}`TOPP tools`; see [Workflow Editor](getting-started/workflows.rst).
+  An graphical user interface (GUI), which is shipped with OpenMS, to create and execute worflows using {term}`TOPP tools`; see [Workflow Editor](/getting-started/workflows.rst).
 
 chromatogram
   A two-dimensional plot that describes the amount of analyte eluted from a chromatography versus the analyte's retention time. OpenMS represents a chromatogram using the class [MSChromatogram](https://openms.de/current_doxygen/html/structOpenMS_1_1Interfaces_1_1Chromatogram.html)
 
 KNIME
-  An advanced workflow editor which OpenMS provides a plugin for; see [Workflow Editor](getting-started/workflows.rst).
+  An advanced workflow editor which OpenMS provides a plugin for; see [Workflow Editor](/getting-started/workflows.rst).
 
 Nextflow
-  Script/DSL-based workflow language, executor and utilities; see [Workflow Editor](getting-started/workflows.rst).
+  Script/DSL-based workflow language, executor and utilities; see [Workflow Editor](/getting-started/workflows.rst).
 
 Galaxy
-  Server and browser-based interactive workflow editor and runner; see [Workflow Editor](getting-started/workflows.rst).
+  Server and browser-based interactive workflow editor and runner; see [Workflow Editor](/getting-started/workflows.rst).
 
 SILAC
   Stands for 'Stable isotope labeling using amino acids in cell culture'.

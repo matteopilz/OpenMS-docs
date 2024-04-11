@@ -36,7 +36,7 @@ If you are doing this tutorial online, choose online in the following tab(s).
 
 If you are working through this tutorial at home/online, proceed with the following steps:
 
-- Download and install OpenMS using the installation instructions for the [OpenMS tools](/openms-applications-and-tools/installation.md).
+- Download and install OpenMS using the installation instructions for the [OpenMS tools](/about/installation.rst).
   :::{note}
   To install the graphical application, please use the downloadable installer for your platform,
   not conda, nor docker.
@@ -75,7 +75,7 @@ On Linux:
 
  ```{note}
  You can also install OpenMS via your package manager (version availability not guaranteed) or build it on your own with our
- [build instructions](/openms-applications-and-tools/installation/installation-on-gnu-linux.md#build-openms-from-source).
+ [build instructions](/about/installation/installation-on-gnu-linux.md#build-openms-from-source).
  ```
 
 ::::
@@ -225,10 +225,10 @@ From now on, you can use this repository for plugins in the **Work with:** drop-
 ```{toctree}
 ---
 maxdepth: 1
+titlesonly: true
 ---
 
 knime-user-tutorial/file-conversion.md
-knime-user-tutorial/toppview.md
 knime-user-tutorial/knime-gui.md
 knime-user-tutorial/minimal-workflow.md
 knime-user-tutorial/lfq-peptide-protein.md

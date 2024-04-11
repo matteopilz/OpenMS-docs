@@ -61,12 +61,12 @@ regularly needed if column names contain spaces, tabs or other special character
 ## Using MSstats in a KNIME workflow
 
 The R package `MSstats` can be used for statistical relative quantification of proteins and peptides in mass spectrometry-based proteomics. Supported are label-free as well as labeled experiments in combination with data-dependent, targeted and data independent acquisition. Inputs can be identified and quantified entities (peptides or proteins) and the output is a list of differentially abundant entities, or summaries of their relative abundance. It depends on accurate feature detection, identification
-and quantification which can be performed e.g. by an OpenMS workflow. MSstats can be used for data processing & visualization, as well as statistical modeling & inference. Please see [^11] and the [MSstats](http://msstats.org) website for further
+and quantification which can be performed e.g. by an OpenMS workflow. MSstats can be used for data processing & visualization, as well as statistical modeling & inference. Please see [^1] and the [MSstats](http://msstats.org) website for further
 information.
 
 ### Identification and quantification of the iPRG2015 data with subsequent MSstats analysis
 
-Here, we describe how to use OpenMS and MSstats for the analysis of the ABRF iPRG2015 dataset[^12].
+Here, we describe how to use OpenMS and MSstats for the analysis of the ABRF iPRG2015 dataset[^2].
 
 ```{note}
 Reanalysing the full dataset from scratch would take too long. In the following tutorial, we will focus on just the conversion process and the downstream analysis.
@@ -76,7 +76,7 @@ Reanalysing the full dataset from scratch would take too long. In the following 
 #### Dataset
 
 The iPRG (Proteome Informatics Research Group) dataset from the study in 2015, as
-described in [^12], aims at evaluating the effect of statistical analysis software on the
+described in [^2], aims at evaluating the effect of statistical analysis software on the
 accuracy of results on a proteomics label-free quantification experiment. The data is
 based on four artificial samples with known composition (background: 200 ng *S. cerevisiae*). These were spiked with different quantities of individual digested proteins,
 whose identifiers were masked for the competition as yeast proteins in the provided
@@ -423,7 +423,7 @@ Please import the workflow from {path}`Workflows,Identificationquantificationiso
 
 The R package `MSstatsTMT` can be used for protein significance analysis in shotgun mass spectrometry-based proteomic experiments with tandem mass tag (TMT) labeling. `MSstatsTMT` provides functionality for two types of analysis & their visualization: Protein summarization based on peptide quantification and Model-based group comparison to detect significant changes in abundance. It depends on accurate feature detection, identification and quantification which can be performed e.g. by an OpenMS workflow.
 
-In general, `MSstatsTMT` can be used for data processing & visualization, as well as statistical modeling. Please see [^13] and the [MSstats](http://msstats.org/msstatstmt/) website for further information.
+In general, `MSstatsTMT` can be used for data processing & visualization, as well as statistical modeling. Please see [^3] and the [MSstats](http://msstats.org/msstatstmt/) website for further information.
 
 There is also an [online lecture](https://youtu.be/3CDnrQxGLbA) and tutorial for `MSstatsTMT` from the May Institute Workshop 2020.
 
@@ -631,3 +631,14 @@ All plots are saved to the in the beginning specified output directory in additi
 #### Note
 
 The isobaric analysis does not always has to be performed on protein level, for example for phosphoproteomics studies one is usually interested on the peptide level - in addition inference on peptides with post-translational modification is not straight forward. Here, we present and additonal workflow on peptide level, which can potentially be adapted and used for such cases. Please see {path}`Workflows,IdentificationquantificationisobaricMSstatsTMT`
+
+## References
+
+[^1]: A. Chawade, M. Sandin, J. Teleman, J. Malmström, and F. Levander, Data Processing Has Major Impact on the Outcome of Quantitative Label-Free LC-MS Analysis, Journal of Proteome Research 14(2), 676–687 (2015), PMID: 25407311, arXiv:http://dx.doi.org/10.1021/pr500665j, doi:10.1021/pr500665j. 30
+
+[^2]: M. Choi, Z. F. Eren-Dogu, C. Colangelo, J. Cottrell, M. R. Hoopmann, E. A. Kapp,
+S. Kim, H. Lam, T. A. Neubert, M. Palmblad, B. S. Phinney, S. T. Weintraub, B. MacLean, and O. Vitek, ABRF Proteome Informatics Research Group (iPRG)
+2015 Study: Detection of Differentially Abundant Proteins in Label-Free Quantitative LC-MS/MS Experiments, J. Proteome Res. 16(2), 945–957 (2017), <a href="https://pubs.acs.org/doi/10.1021/acs.jproteome.6b00881">doi: 10.1021/acs.jproteome.6b00881</a>. 40
+
+[^3]: T. Huang, M. Choi, S. Hao, and O. Vitek, MSstatsTMT: Protein Significance Analysis in shotgun mass spectrometry-based proteomic experiments with tandem
+mass tag (TMT) labeling., (2020), <a href="https://bioconductor.org/packages/release/bioc/html/MSstatsTMT.html">doi:10.18129/B9.bioc.MSstatsTMT</a>. 55

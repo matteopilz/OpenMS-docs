@@ -1,5 +1,5 @@
 Overview of the graphical user interface
-----------------------------------------
+========================================
 
 |![The KNIME workbench](/_images/openms-user-tutorial/knime-setup/knime_workbench_marked.png)|
 |:--:|
@@ -8,7 +8,7 @@ Overview of the graphical user interface
 The graphical user interface (GUI) of KNIME consists of different components or so-called panels that are shown in
 above image. We will briefly introduce the individual panels and their purposes below.
 
-##### Workflow Editor
+## Workflow Editor
 
 The workflow editor is the central part of the KNIME GUI. Here you assemble the workflow by adding nodes from the Node
 Repository via ”drag & drop”. For quick creation of a workflow, note that double-clicking on a node in the repository
@@ -19,19 +19,19 @@ edges and pressing <kbd>DEL</kbd> or <kbd>Fn</kbd> + <kbd>Backspace</kbd> depend
 happens via dragging rectangles with the mouse or adding elements to the selection by clicking them while holding down
 <kbd>Ctrl</kbd>.
 
-##### KNIME Explorer
+## KNIME Explorer
 
 Shows a list of available workflows (also called workflow projects). You can open a workflow by double-clicking it. A
 new workflow can be created with a right-click in the Workflow Explorer followed by choosing **New KNIME Workflow**
 from the appearing context menu. Remember to save your workflow often with the <kbd>Ctrl</kbd> + <kbd>S</kbd> shortcut.
 
-##### Workflow Coach
+## Workflow Coach
 
 Shows a list of suggested following nodes, based on the last added/clicked nodes. When you are not sure which node to
 choose next, you have a reasonable suggestion based on other users behavior there. Connect them to the last node with a
 double-click.
 
-##### Node Repository
+## Node Repository
 
 Shows all nodes that are available in your KNIME installation. Every plugin you install will provide new nodes that can
 be found here. The OpenMS nodes can be found in **Community Node** > **OpenMS** Nodes to hook up to external search engines
@@ -39,28 +39,28 @@ and the RawFileConverter are found under **Community Node** > **OpenMSThirdParty
 Files or Output Folders) can be found in **Community Nodes** > **GenericKnimeNode**. You can search the node repository
 by typing the node name into the small text box in the upper part of the node repository.
 
-##### Outline
+## Outline
 
 The Outline panel contains a small overview of the complete workflow. While of limited use when working on a small
 workflow, this feature is very helpful as soon as the workflows get bigger. You can adjust the zoom level of the explorer
 by adjusting the percentage in the toolbar at the top of KNIME.
 
-##### Console
+## Console
 
 In the console panel, warning and error messages are shown. This panel will provide helpful information if one of the
 nodes failed or shows a warning sign.
 
-##### Node Description
+## Node Description
 
 As soon as a node is selected, the Node Description window will show the documentation of the node including
 documentation for all its parameters and especially their in- and outputs, such that you know what types of data nodes
 may produce or expect. For OpenMS nodes you will also find a link to the tool page of the online documentation.
 
-#### Creating workflows
+## Creating workflows
 
 Workflows can easily be created by a right click in the Workflow Explorer followed by clicking on **New KNIME workflow**.
 
-#### Sharing workflows
+## Sharing workflows
 
 To be able to share a workflow with others, KNIME supports the import and export of complete workflows. To export a
 workflow, select it in the Workflow Explorer and select **File** > **Export KNIME Workflow**. KNIME will export
@@ -75,7 +75,7 @@ For your convenience we added all workflows discussed in this tutorial to the **
  *knwf* file and after that double-click it in your KNIME Workflow repository to open it.
 ```
 
-#### Duplicating workflows
+## Duplicating workflows
 
 In this tutorial, a lot of the workflows will be created based on the workflow from a previous task. To keep the
 intermediate workflows, we suggest you create copies of your workflows so you can see the progress. To create a copy of

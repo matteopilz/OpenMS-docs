@@ -1,6 +1,9 @@
 About OpenMS
 ============
 
+What is OpenMS
+--------------
+
 `OpenMS <http://www.openms.org/>`_ is a free, open-source framework based on a C++ library with Python bindings. It is commonly used for liquid
 chromatography-mass spectrometry (:term:`LC-MS`) data management and analyses. OpenMS provides an infrastructure for the rapid
 development of mass spectrometry related software as well as a rich toolset built on top of it. OpenMS is available
@@ -22,7 +25,12 @@ Berlin, and the University of Toronto.
 
 Get involved
 ------------
-TODO
+OpenMS is developed by a group of `core developers <https://openms.de/contributors/>`_ and the community. You can help spreading the idea of open source mass spectrometry analysis by:
+
+* Contribute to the development by giving us your feedback about the OpenMS project on `Discord <https://discord.gg/aJyWqf6uCn>`_ or become active by `developing new tools yourself </manual/develop>`_.
+* Donate to the OpenMS project using our `opencollective <https://opencollective.com/openms>`_ account. All donations will be used strictly to fund the development of Openms’s open source software, documentation, and community.
+* Promote OpenMS either online (`e.g. on X <https://twitter.com/openmsteam>`_) or in your work group.
+
 
 .. toctree::
     :maxdepth: 1

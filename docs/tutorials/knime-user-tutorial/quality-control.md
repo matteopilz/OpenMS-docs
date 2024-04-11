@@ -1,18 +1,18 @@
 Quality control
 ===============
 
-### Introduction
+## Introduction
 
 In this chapter, we will build on an existing workflow with OpenMS / KNIME to add some quality control (QC). We will utilize the qcML tools in OpenMS to create a file with which we can collect different measures of quality to the mass spectrometry runs themselves and the applied analysis. The file also serves the means of visually reporting on the collected quality measures and later storage along the other analysis result files. We will, step-by-step, extend the label-free quantitation workflow from <a href="#label-free-quantification-of-peptides">section 3</a> with QC functions and thereby enrich each time the report given by the qcML file. But first, to make sure you get the most of this tutorial section, a little primer on how we handle QC on the technical level.
 
-#### QC metrics and qcML
+### QC metrics and qcML
 
 To assert the quality of a measurement or analysis we use quality metrics. Metrics are describing a certain aspect of the measurement or analysis and can be anything from a single value, over a range of values to an image plot or other summary. Thus, qcML metric representation is divided into QC parameters (QP) and QC attachments (QA) to be able to represent all sorts of metrics on a technical level.
 A QP may (or may not) have a value which would equal a metric describable with a single value. If the metric is more complex and needs more than just a single value, the QP does not require the single value but rather depends on an attachment of values (QA) for full meaning. Such a QA holds the plot or the range of values in a table-like form. Like this, we can describe any metric by a QP and an optional QA.
 To assure a consensual meaning of the quality parameters and attachments, we created a controlled vocabulary (CV). Each entry in the CV describes a metric or part/extension thereof. We embed each parameter or attachment with one of these and by doing so, connect a meaning to the QP/QA. Like this, we later know exactly what we collected and the programs can find and connect the right dots for rendering the report or calculating new metrics automatically. You can find the constantly growing controlled vocabulary [here](https://github.com/qcML/qcML-development/blob/master/cv/qc-cv.obo).
 Finally, in a qcml file, we split the metrics on a per mass-spectrometry-run base or a set of mass-spectrometry-runs respectively. Each run or set will contain its QP/QA we calculate for it, describing their quality.
 
-### Building a qcML file per run
+## Building a qcML file per run
 
 As a start, we will build a basic qcML file for each mzML file in the label-free analysis. We are already creating the two necessary analysis files to build a basic qcML file upon each mzML file, a feature file and an identification file. We use the **QCCalculator** node from **Community** > **OpenMS** > **Utilities** where also all other QC* nodes will be found. The **QCCalculator** will create a very basic qcML file in which it will store collected and calculated quality data.
 
@@ -65,7 +65,7 @@ To have a peek into what our qcML now looks like for one of the **ZipLoop** iter
 Find your first created qcML file and open it with the browser (not IE), and the contained QC parameters will be rendered for you.
 </div>
 
-### Adding brand new QC metrics
+## Adding brand new QC metrics
 
 We can also add brand new QC metrics to our qcML files. Remember the **Histogram** you added inside the **ZipLoop** during the label-free quantitation section? Let’s imagine for a moment this was a brand new and utterly important metric and plot for the assessment of your analyses quality. There is an easy way to integrate such new metrics into your qcMLs. Though the **Histogram** node cannot pass its plot to an image, we can do so with a **R View (table)**.
 
@@ -96,7 +96,7 @@ ggplot(knime.in, aes(x=peptide_charge)) +
 |:--:|
 |Figure 52: QC with new metric.|
 
-### Set QC metrics
+## Set QC metrics
 
 Besides monitoring the quality of each individual mass spectrometry run analysis, another capability of QC with OpenMS and qcML is to monitor the complete set. The easiest control is to compare mass spectrometry runs which should be similar, e.g. technical replicates, to spot any aberrations in the set.
 For this, we will first collect all created qcML files, merge them together and use the qcML onboard set QC properties to detect any outliers.
@@ -115,5 +115,5 @@ When inspecting the set-qcML file in a browser, we will be presented another ove
 
 <div class="admonition task">
 <p class="admonition-title">**Task**</p>
-For ideas on new QC metrics and parameters, as you add them in your qcML files as generic parameters, feel free to [contact us](/quick-reference/contact-us.md), so we can include them in the CV.
+For ideas on new QC metrics and parameters, as you add them in your qcML files as generic parameters, feel free to [contact us](/about/communication.md), so we can include them in the CV.
 </div>

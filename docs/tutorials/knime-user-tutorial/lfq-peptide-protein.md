@@ -1,6 +1,6 @@
-## Label-free quantification of peptides and proteins
+# Label-free quantification of peptides and proteins
 
-### Introduction
+## Introduction
 
 In the following chapter, we will build a workflow with OpenMS / KNIME to quantify a label-free experiment. Label-free
 quantification is a method aiming to compare the relative amounts of proteins or peptides in two or more samples. We will
@@ -8,7 +8,7 @@ start from the minimal workflow of the last chapter and, step-by-step, build a l
 
 The complete workflow can be downloaded [here](https://hub.knime.com/openms-team/spaces/Tutorial%20Workflows%20OpenMS%203.0/Proteomics_LFQ~MvMoVSrTZKLI6H3B/current-state) as well.
 
-### Peptide identification
+## Peptide identification
 
 As a start, we will extend the minimal workflow so that it performs a peptide identification using the Comet search
 engine. Comet is included in the OpenMS installation, so you do not need to  download and
@@ -17,7 +17,7 @@ install it yourself.
 Let’s start by replacing the input files in our `Input Files` node by the three mzML files in
 **Example Data** > **Labelfree** > **datasets** > **lfqxspikeinxdilutionx1-3.mzML**. This is a reduced toy dataset where
 each of the three runs contains a constant background of `S. pyogenes` peptides as well as human spike-in peptides in
-different concentrations. [^10]
+different concentrations. [^1]
 
 - Instead of `FileFilter`, we want to perform Comet identification, so we simply replace the `FileFilter` node with the
   `CometAdapter` node **Community Nodes** > **OpenMSThirdParty** > **Identification**, and we are almost done. Just make sure you
@@ -105,7 +105,7 @@ The below images shows Comet ID pipeline including FDR filtering.
 |Figure 12: Comet ID pipeline including FDR filtering|
 
 
-#### Bonus task: Identification using several search engines
+### Bonus task: Identification using several search engines
 
 ```{note}
 If you are ahead of the tutorial or later on, you can further improve your FDR identification workflow by a so-called
@@ -140,7 +140,7 @@ In the end, the ID processing part of the workflow can be collapsed into a Metan
 |:--:|
 |Figure 13: Complete consensus identification workflow|
 
-### Feature Mapping
+## Feature Mapping
 
 Now that we have successfully constructed a peptide identification pipeline, we can assign this information to the corresponding feature signals.
 
@@ -202,7 +202,7 @@ available input files and extend it a bit further, so that it is able to find an
   You can specify the desired column separation character in the parameter settings (by default, it is set to “ ” (a space)). The output file of `TextExporter` can also be opened with external tools, e.g., Microsoft Excel, for downstream statistical analyses.
   ```
 
-#### Basic data analysis in KNIME
+## Basic data analysis in KNIME
 
 In this section we are going to use the output of the `ConsensusTextReader` for downstream analysis of the quantification results:
 
@@ -230,7 +230,7 @@ You have now constructed an entire identification and label-free feature mapping
 |Figure 17: Simple KNIME data analysis example for LFQ|
 
 
-### Extending the LFQ workflow by protein inference and quantification
+## Extending the LFQ workflow by protein inference and quantification
 
 We have made the following changes compared to the original label-free quantification workflow from the last chapter:
 
@@ -247,11 +247,11 @@ We have made the following changes compared to the original label-free quantific
 - Next, we have added a third outgoing connection to our ID meta node and connected it to the second input port of `ZipLoopEnd`. Thus, KNIME will wait until all input files have been processed by the loop and then pass on the resulting list of idXML files to the subsequent IDMerger node, which merges all identifications from all idXML files into a single idXML file. This is done to get a unique assignment of peptides to proteins over all samples.
 - Instead of the meta node **Protein inference** with **FidoAdapter**, we could have just used a **FidoAdapter** node ( **Community Nodes** > **OpenMS** > **Identification Processing**). However, the meta node contains an additional subworkflow which, besides calling **FidoAdapter**, performs a statistical validation (e.g. (pseudo) receiver operating curves; ROCs) of the protein inference results using some of the more advanced KNIME and R nodes. The meta node also shows how to use **MzTabExporter** and **MzTabReader**.
 
-### Statistical validation of protein inference results
+## Statistical validation of protein inference results
 
 In the following section, we will explain the subworkflow contained in the **Protein inference with FidoAdapter** meta node.
 
-#### Data preparation
+### Data preparation
 
 For downstream analysis on the protein ID level in KNIME, it is again necessary to convert the idXML-file-format result generated from **FidoAdapter** into a KNIME table.
 
@@ -260,7 +260,7 @@ For downstream analysis on the protein ID level in KNIME, it is again necessary 
   format (triangle ports) for each section. Some ports might be empty if a section did not exist. Of course, we continue by connecting the downstream nodes with the protein section output (second port).
 - Since the protein section contains single proteins as well as protein groups, we filter them for single proteins with the standard **Row Filter**.
 
-#### ROC curve of protein ID
+### ROC curve of protein ID
 
 ROC Curves (Receiver Operating Characteristic curves) are graphical plots that visualize sensitivity (true-positive rate) against fall-out (false positive rate). They are often used to judge the quality of a discrimination method like e.g., peptide or protein identification engines. ROC Curve already provides the functionality of drawing ROC curves for binary classification problems. When configuring this node, select the `opt_global_target_decoy` column as the class (i.e. target outcome) column. We want to find out, how good our inferred protein probability discriminates between them,
 therefore add `best_search_engine_score[1]` (the inference engine score is treated like a peptide search engine score) to the list of *”Columns containing positive class probabilities”*. View the plot by right-clicking and selecting **View: ROC Curves**. A perfect classifier has
@@ -269,7 +269,7 @@ identifications are true, which are false) is usually not known. Instead, so cal
 discovery rate (FDR) or its protein-centric counterpart, the q-value. The FDR is approximated by using the target-decoy estimate in order to distinguish true IDs from
 false IDs by separating target IDs from decoy IDs.
 
-#### Posterior probability and FDR of protein IDs
+### Posterior probability and FDR of protein IDs
 
 ROC curves illustrate the discriminative capability of the scores of IDs. In the case of protein identifications, Fido produces the posterior probability of each protein as
 the output score. However, a perfect score should not only be highly discriminative (distinguishing true from false IDs), it should also be “calibrated” (for probability indicating that all IDs with reported posterior probability scores of 95% should roughly have a 5% probability of being false. This implies that the estimated number of false
@@ -289,3 +289,7 @@ that contain this protein ID. We plot the protein ID results versus two differen
 |:--:|
 |Figure 22: The pseudo-ROC Curve of protein IDs. The accumulated number of protein IDs is plotted on two kinds of scales: target-decoy protein FDR and Fido posterior probability estimated FDR. The largest value of posterior probability estimated FDR is already smaller than 0.04, this is because the posterior probability output from Fido is generally very high|
 
+## References
+
+[^1]: A. Chawade, M. Sandin, J. Teleman, J. Malmström, and F. Levander, <a href="http://dx.doi.org/10.1021/pr500665j">Data Processing Has Major Impact on the Outcome of Quantitative Label-Free LC-MS Analysis</a>, Journal of Proteome Research 14(2), 676–687 (2015), PMID: 25407311,
+arXiv:http://dx.doi.org/10.1021/pr500665j, <a href="https://pubs.acs.org/doi/10.1021/pr500665j">doi:10.1021/pr500665j</a>. 30

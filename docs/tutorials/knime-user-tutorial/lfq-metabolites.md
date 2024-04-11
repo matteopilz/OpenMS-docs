@@ -1,11 +1,11 @@
 Label-free quantification of metabolites
 ========================================
 
-### Introduction
+## Introduction
 
 Quantification and identification of chemical compounds are basic tasks in metabolomic studies. In this tutorial session we construct a UPLC-MS based, label-free quantification and identification workflow. Following quantification and identification we then perform statistical downstream analysis to detect quantification values that differ significantly between two conditions. This approach can, for example, be used to detect biomarkers. Here, we use two spike-in conditions of a dilution series (0.5 mg/l and 10.0 mg/l, male blood background, measured in triplicates) comprising seven isotopically labeled compounds. The goal of this tutorial is to detect and quantify these differential spike-in compounds against the complex background.
 
-### Basics of non-targeted metabolomics data analysis
+## Basics of non-targeted metabolomics data analysis
 
 For the metabolite quantification we choose an approach similar to the one used for peptides, but this time based on the OpenMS `FeatureFinderMetabo` method. This feature finder again collects peak picked data into individual mass traces. The reason
 why we need a different feature finder for metabolites lies in the step after trace detection: the aggregation of isotopic traces belonging to the same compound ion into the same feature. Compared to peptides with their averagine model, small molecules
@@ -137,8 +137,8 @@ The `FeatureLinkerUnlabeledQT` output can be visualized in TOPPView on top of th
 |:--:|
 |Figure 35: Visualization of .consensusXML output over the .mzML and .featureXML ’layer’.|
 
-### Basic metabolite identification
-At the current state we found several metabolites in the individual maps but so far don’t know what they are. To identify metabolites, OpenMS provides multiple tools, including search by mass: the AccurateMassSearch node searches observed masses against the Human Metabolome Database (HMDB)[^14]<sup>,</sup> [^15]<sup>,</sup> [^16]. We start with the workflow from the previous section (see <a href="#figure-34">Figure 34</a>).
+## Basic metabolite identification
+At the current state we found several metabolites in the individual maps but so far don’t know what they are. To identify metabolites, OpenMS provides multiple tools, including search by mass: the AccurateMassSearch node searches observed masses against the Human Metabolome Database (HMDB)[^1]<sup>,</sup> [^2]<sup>,</sup> [^3]. We start with the workflow from the previous section (see <a href="#figure-34">Figure 34</a>).
 
 - Add a **FileConverter** node (**Community Nodes** > **OpenMS** > **File Handling**) and connect the output of the FeatureLinkerUnlabeledQT to the incoming port.
 - Open the Configure dialog of the **FileConverter** node and select the tab **OutputTypes**. In the drop down list for FileConverter.1.out select **featureXML**.
@@ -156,14 +156,14 @@ At the current state we found several metabolites in the individual maps but so 
 - Add an `Output Folder` node and connect the first output port of the
   **AccurateMassSearch** node to the `Output Folder` node.
 
-The result of the **AccurateMassSearch** node is in the mzTab format[^17] so you can easily open it in a text editor or import it into Excel or KNIME, which we will do in the next section. The complete workflow from this section is shown in <a href="#figure-36">Figure 36</a>.
+The result of the **AccurateMassSearch** node is in the mzTab format[^4] so you can easily open it in a text editor or import it into Excel or KNIME, which we will do in the next section. The complete workflow from this section is shown in <a href="#figure-36">Figure 36</a>.
 
 (Figure_36)=
 |![Label-free quantification and identification workflow for metabolites](/_images/openms-user-tutorial/metabo/metabo_part2.png)|
 |:--:|
 |Figure 36: Label-free quantification and identification workflow for metabolites.|
 
-#### Convert your data into a KNIME table
+### Convert your data into a KNIME table
 
 The result from the TextExporter node as well as the result from the **AccurateMassSearch** node are files while standard KNIME nodes display and process only KNIME tables. To convert these files into KNIME tables we need two different nodes. For the **AccurateMassSearch** results, we use the **MzTabReader** node (**Community Nodes** > **OpenMS** > **Conversion** > **mzTab**) and its **Small Molecule Section** port. For the result of the **TextExporter**, we use the `ConsensusTextReader` (**Community Nodes** > **OpenMS** > **Conversion**).
 When executed, both nodes will import the OpenMS files and provide access to the data as KNIME tables. The retention time values are exported as a list using the **MzTabReader** based on the current PSI-Standard. This has to be parsed using the **SplitCollectionColumn**, which outputs a ”Split Value 1” based on the first entry in the rention time list, which has to be renamed to retention time using the **ColumnRename**. You can now combine both tables using the **Joiner** node (**Manipulation** > **Column** > **Split & Combine**) and configure it to match the m/z and retention time values of the respective tables. The full workflow is shown in <a href="#figure-37">Figure 37</a>.
@@ -173,7 +173,7 @@ When executed, both nodes will import the OpenMS files and provide access to the
 |:--:|
 |Figure 37: Label-free quantification and identification workflow for metabolites that loads the results into KNIME and joins the tables.|
 
-#### Adduct grouping
+### Adduct grouping
 
 Metabolites commonly co-elute as ions with different adducts (e.g., glutathione+H, glutathione+Na) or with charge-neutral modifications (e.g., water loss). Grouping such related ions allows to leverage information across features. For example, a low intensity, single trace feature could still be assigned a charge and adduct due to a matching high-quality feature. Several OpenMS tools, such as **AccurateMassSearch**, can use this information to, for example, narrow down candidates for identification.
 
@@ -199,7 +199,7 @@ Options to respect or replace ion charges or adducts allow for example:
 A modified metabolomics workflow with exemplary MetaboliteAdductDecharger use and parameters is provided in {path}`Workflows,MetaboliteAdductGrouping.knwf`. Run the workflow, inspect tool outputs and compare **AccurateMassSearch** results with and without adduct grouping.
 </div>
 
-#### Visualizing data
+### Visualizing data
 
 Now that you have your data in KNIME you should try to get a feeling for the capabilities of KNIME.
 
@@ -218,7 +218,7 @@ Have a look at the `Column Filter` node to reduce the table to the interesting c
 Try to compute and visualize the m/z and retention time error of the different feature elements (from the input maps) of each consensus feature. Hint: A nicely configured **Math Formula (Multi Column)** node should suffice.
 </div>
 
-#### Spectral library search
+### Spectral library search
 
 Identifying metabolites using only the accurate mass may lead to ambiguous results. In practice, additional information (e.g. the retention time) is used to further narrow down potential candidates. Apart from MS1-based features, tandem mass spectra (MS2) of metabolites provide additional information. In this part of the tutorial, we take a look on how metabolite spectra can be identified using a library of previously identified spectra.
 
@@ -236,7 +236,7 @@ Construct the workflow as shown in <a href="#figure-39">Fig. 39</a>. Use the fil
 
 Run the workflow and inspect the output.
 
-#### Manual validation
+### Manual validation
 
 In metabolomics, matches between tandem spectra and spectral libraries are manually validated. Several commercial and free online resources exist which help in that task. Some examples are:
 
@@ -266,10 +266,10 @@ On the METLIN homepage search for **Name** Glutathione using the **Advanced Sear
 |:--:|
 |Figure 41: Tandem spectrum of glutathione. Visualized in Metlin. Note that several fragment spectra from varying collision energies are available.|
 
-#### De novo identification
+### De novo identification
 
 Another method for MS2 spectra-based metabolite identification is de novo identification. This approach can be used in addition to the other methods (accurate mass search, spectral library search) or individually if no spectral library is available. In this part of the tutorial, we discuss how metabolite spectra can be identified using de
-novo tools. To this end, the tools SIRIUS and CSI:FingerID ([^18]<sup>,</sup> [^19]<sup>,</sup> [^20]) were integrated in the OpenMS Framework as SiriusAdapter. SIRIUS uses isotope pattern analysis to detect the molecular formula and further analyses the fragmentation pattern
+novo tools. To this end, the tools SIRIUS and CSI:FingerID ([^5]<sup>,</sup> [^6]<sup>,</sup> [^7]) were integrated in the OpenMS Framework as SiriusAdapter. SIRIUS uses isotope pattern analysis to detect the molecular formula and further analyses the fragmentation pattern
 of a compound using fragmentation trees. CSI:FingerID is a method for searching a
 fingerprint of a small molecule (metabolite) in a molecular structure database.
 The node **SiriusAdapter** is able to work in different modes depending on the provided input.
@@ -298,7 +298,7 @@ Run the workflow and inspect the output.
 
 The output consists of two mzTab files and an internal .ms file. One mzTab for SIRIUS and the other for the CSI:FingerID. These provide information about the chemical formula, adduct and the possible compound structure. The information is referenced to the spectrum used in the analysis. Additional information can be extracted from the **SiriusAdapter** by setting an ”out_workspace_directory”. Here the SIRIUS workspace will be provided after the calculation has finished. This workspace contains information about annotated fragments for each successfully explained compound.
 
-### Downstream data analysis and reporting
+## Downstream data analysis and reporting
 
 In this part of the metabolomics session we take a look at more advanced downstream analysis and the use of the statistical programming language R. As laid out in the introduction we try to detect a set of spike-in compounds against a complex blood background. As there are many ways to perform this type of analysis we provide a complete workflow.
 
@@ -310,11 +310,11 @@ Import the workflow from <code>Workflows</code> ► <code>metaboliteID.knwf</cod
 
 The section below will guide you in your understanding of the different parts of the workflow. Once you understood the workflow you should play around and be creative. Maybe create a novel visualization in KNIME or R? Do some more elaborate statistical analysis? Note that some basic R knowledge is required to fully understand the processing in **R Snippet** nodes.
 
-#### Signal processing and data preparation for identification
+### Signal processing and data preparation for identification
 
 The following part is analogous to what you did for the simple metabolomics pipeline.
 
-#### Data preparation for quantification
+### Data preparation for quantification
 
 The first part is identical to what you did for the simple metabolomics pipeline. Additionally, we convert zero intensities into NA values and remove all rows that contain at least one NA value from the analysis. We do this using a very simple **R Snippet** and subsequent **Missing Value filter** node.
 
@@ -323,7 +323,7 @@ The first part is identical to what you did for the simple metabolomics pipeline
 Inspect the **R Snippet** by double-clicking on it. The KNIME table that is passed to an **R Snippet** node is available in R as a data.frame named <code>knime.in</code>. The result of this node will be read from the data.frame <code>knime.out</code> after the script finishes. Try to understand and evaluate parts of the script (Eval Selection). In this dialog you can also print intermediary results using for example the R command <code>head(knime.in)</code> or <code>cat(knime.in)</code> to the Console pane.
 </div>
 
-#### Statistical analysis
+### Statistical analysis
 
 After we linked features across all maps, we want to identify features that are significantly deregulated between the two conditions. We will first scale and normalize the data, then perform a t-test, and finally correct the obtained p-values for multiple testing using Benjamini-Hochberg. All of these steps will be carried out in individual **R Snippet** nodes.
 - Double-click on the first **R Snippet** node labeled ”log scaling” to open the **R Snippet** dialog. In the middle you will see a short R script that performs the log scaling. To perform the log scaling we use a so-called regular expression (<code>grepl</code>) to select all columns containing the intensities in the six maps and take the log2 logarithm.
@@ -334,7 +334,7 @@ After we linked features across all maps, we want to identify features that are 
 - The **Numeric Row Splitter** is used to filter less interesting parts of the data. In this case we only keep columns where the fold-change is ≥ 2.
 - We adjust the p-values for multiple testing using Benjamini-Hochberg and keep all consensus features with a q-value ≤ 0.01 (i.e. we target a false-discovery rate of 1%).
 
-#### Interactive visualization
+### Interactive visualization
 
 KNIME supports multiple nodes for interactive visualization with interrelated output. The nodes used in this part of the workflow exemplify this concept. They further demonstrate how figures with data dependent customization can be easily realized using basic KNIME nodes. Several simple operations are concatenated in order to enable an interactive volcano plot.
 
@@ -348,7 +348,7 @@ KNIME supports multiple nodes for interactive visualization with interrelated ou
 Inspect the nodes of this section. Customize your visualization and possibly try to visualize other aspects of your data.
 </div>
 
-#### Advanced visualization
+### Advanced visualization
 
 R Dependencies: This section requires that the R packages <code>ggplot2</code> and <code>ggfortify</code> are both installed. <code>ggplot2</code> is part of the KNIME R Statistics Integration (Windows Binaries) which should already be installed via the full KNIME installer, ggfortify however is not. In case that you use an R installation where one or both of them are not yet installed, add an **R Snippet** node and double-click to configure. In the R Script text editor, enter the following code:
 
@@ -375,7 +375,7 @@ Even though the basic capabilities for (interactive) plots in KNIME are valuable
 - The used `RView (Table)` nodes combine the possibility to write R snippet code with visualization capabilities inside KNIME. Resulting images can be looked at in the output RView, or saved via the **Image Writer (Port)** node.
 - The heatmap nodes make use of the `gplots` libary, which is by default part of the R Windows binaries (for full KNIME version 3.1.1 or higher). We again use regular expressions to extract all measured intensity columns for plotting. For clarity, feature names are only shown in the heatmap after filtering by fold changes.
 
-#### Data preparation for reporting
+### Data preparation for reporting
 
 Following the identification, quantification and statistical analysis our data is merged and formatted for reporting. First we want to discard our normalized and logarithmized intensity values in favor of the original ones. To this end we first remove the intensity columns (`Column Filter`) and add the original intensities back (**Joiner**). For that, we use an Inner Join 2 with the **Joiner** node. In the dialog of the node, we add two entries for the Joining Columns and for the first column we pick `retention_time` from the top input (i.e. the **AccurateMassSearch** output) and `rt_cf` (the retention time of the consensus features) for the bottom input (the result from the quantification). For the second column you should choose `exp_mass_to_charge` and `mz_cf` respectively to make the joining unique. Note that the workflow needs to be executed up to the previous nodes for the possible selections of columns to appear.
 
@@ -395,3 +395,27 @@ Inspect the output of the join operation after the Molecule Type Cast and RDKit 
 </div>
 
 While all relevant information is now contained in our table the presentation could be improved. Currently, we have several rows corresponding to a single consensus feature (=linked feature) but with different, alternative identifications. It would be more convenient to have only one row for each consensus feature with all accurate mass identifications added as additional columns. To this end, we use the **Column to Grid** node that flattens several rows with the same consensus number into a single one. Note that we have to specify the maximum number of columns in the grid so we set this to a large value (e.g. 100). We finally export the data to an Excel file (**XLS Writer**).
+
+## References
+
+[^1]: D. S. Wishart, D. Tzur, C. Knox, et al., HMDB: the Human Metabolome Database,
+Nucleic Acids Res 35(Database issue), D521–6 (Jan 2007), <a href="https://academic.oup.com/nar/article/35/suppl_1/D521/1109186">doi:10.1093/nar/gkl923</a>. 69
+
+[^2]: D. S. Wishart, C. Knox, A. C. Guo, et al., HMDB: a knowledgebase for the human
+metabolome, Nucleic Acids Res 37(Database issue), D603–10 (Jan 2009), <a href="https://academic.oup.com/nar/article/37/suppl_1/D603/1011821">doi: 10.1093/nar/gkn810</a>. 69
+
+[^3]: D. S. Wishart, T. Jewison, A. C. Guo, M. Wilson, C. Knox, et al., HMDB 3.0–The
+Human Metabolome Database in 2013, Nucleic Acids Res 41(Database issue),D801–7 (Jan 2013), <a href="https://academic.oup.com/nar/article/41/D1/D801/1055560">doi:10.1093/nar/gks1065</a>. 69
+
+[^4]: J. Griss, A. R. Jones, T. Sachsenberg, M. Walzer, L. Gatto, J. Hartler, G. G.
+Thallinger, R. M. Salek, C. Steinbeck, N. Neuhauser, J. Cox, S. Neumann, J. Fan,
+F. Reisinger, Q.-W. Xu, N. Del Toro, Y. Perez-Riverol, F. Ghali, N. Bandeira, I. Xenarios, O. Kohlbacher, J. A. Vizcaino, and H. Hermjakob, The mzTab Data Exchange Format: communicating MS-based proteomics and metabolomics experimental results to a wider audience, Mol Cell Proteomics (Jun 2014), doi:10.1074/mcp.O113.036681. 69
+
+[^5]: S. Böcker, M. C. Letzel, Z. Lipták, and A. Pervukhin, SIRIUS: Decomposing isotope
+patterns for metabolite identification, Bioinformatics 25(2), 218–224 (2009), <a href="https://academic.oup.com/bioinformatics/article/25/2/218/218950">doi:10.1093/bioinformatics/btn603</a>. 75
+
+[^6]: S. Böcker and K. Dührkop, Fragmentation trees reloaded, J. Cheminform. 8(1),
+1–26 (2016), <a href="https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0116-8">doi:10.1186/s13321-016-0116-8</a>. 75
+
+[^7]: K. Dührkop, H. Shen, M. Meusel, J. Rousu, and S. Böcker, <a href="https://www.pnas.org/doi/abs/10.1073/pnas.1509788112">Searching molecular structure databases with tandem mass spectra using CSI:FingerID</a>, Proc. Natl.
+Acad. Sci. 112(41), 12580–12585 (oct 2015), <a href="https://www.pnas.org/doi/full/10.1073/pnas.1509788112">doi:10.1073/pnas.1509788112</a>. 75

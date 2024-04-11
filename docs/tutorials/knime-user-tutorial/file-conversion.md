@@ -29,11 +29,11 @@ Both tools are available in: {{ '{path}'+'`C:,Program Files,OpenMS-{0},share,Ope
 
 You can find a small RAW file on the USB stick {path}`Example_Data,Introduction,datasets,raw`.
 
-##### MSConvertGUI
+## MSConvertGUI
 
 `MSConvertGUI` (see <a href="#figure-1">Fig. 1</a>) exposes the main parameters for data conversion in a convenient graphical user interface.
 
-##### msconvert
+## msconvert
 
 The `msconvert` command line tool has no graphical user interface but offers more options than the application `MSConvertGUI`. Additionally, since it can be used within a batch script, it allows converting large numbers of files and can be much more easily automatized.
 To convert and pick the file `raw_data_file.RAW` you may write:
@@ -59,11 +59,11 @@ msconvert *.RAW -o my_output_dir
 To display all options you may type `msconvert --help` . Additional information is available on the `ProteoWizard` web page.
 ```
 
-##### ThermoRawFileParser
+## ThermoRawFileParser
 
 Recently the open-source platform independent ThermoRawFileParser tool has been developed. While Proteowizard and MSConvert are only available for Windows systems this new tool allows to also convert raw data on Mac or Linux.
 
 ```{note}
 To learn more about the `ThermoRawFileParser` and how to use it in
-KNIME see <a href="#a-minimal-workflow">A minimal workflow</a>.
+KNIME see <a href="#minimal-workflow">Minimal Workflow</a>.
 ```
