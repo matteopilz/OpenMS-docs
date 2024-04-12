@@ -1,7 +1,9 @@
 GNU/Linux
 =========================
 
+
 ```{include} installation-with-conda.md
+:start-after: "% start-after"
 ```
 
 ## Install via package managers
@@ -65,6 +67,7 @@ If you encounter errors with unavailable packages, troubleshoot using the follow
    Add the folders in your `PATH` for a convenient use of the adapters.
 
 ```{include} run-in-container.md
+:start-after: "% start-after"
 ```
 
 ## Build OpenMS from source

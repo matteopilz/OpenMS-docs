@@ -1,3 +1,6 @@
+# Conda
+
+% start-after
 ## Install via Conda
 
 ```{warning}

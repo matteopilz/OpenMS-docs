@@ -1,3 +1,6 @@
+# Container
+
+% start-after
 ## Run OpenMS inside a (Bio)Container
 
 1. Install a containerization software (e.g., [Docker](https://docs.docker.com/engine/install/) or [Singularity](https://sylabs.io/guides/3.0/user-guide/quick_start.html#quick-installation-steps))

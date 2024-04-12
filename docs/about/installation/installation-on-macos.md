@@ -2,6 +2,7 @@ macOS
 ====================
 
 ```{include} installation-with-conda.md
+:start-after: "% start-after"
 ```
 
 ## Install via macOS installer
@@ -85,6 +86,7 @@ To use {term}`TOPP` as regular app in the shell, add the following lines to the 
 :::
 
 ```{include} run-in-container.md
+:start-after: "% start-after"
 ```
 
 ## Build OpenMS from source
