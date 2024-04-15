@@ -69,7 +69,7 @@ There are two mailing list currently:
 
 ***
 
-### <a class="button cta rounded primary-btn raised" href="https://twitter.com/openmsteam">Twitter</a>
+### <a class="button cta rounded primary-btn raised" href="https://x.com/OpenMSTeam?t=aOoFOQ3nQg3vIOTTQfBBqw&s=33">Twitter</a>
 
 Contact us or just follow the latest OpenMS news on Twitter.
 

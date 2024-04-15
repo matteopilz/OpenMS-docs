@@ -33,4 +33,4 @@ Launch "https://nf-co.re/launch?pipeline=diaproteomics"
 
 
 ## References
-[^1]:P. Di Tommaso, et al. Nextflow enables reproducible computational workflows. Nature Biotechnology 35, 316–319 (2017), <a href="http://www.nature.com/nbt/journal/v35/n4/full/nbt.3820.html">doi:10.1038/nbt.3820</a>.
+[^1]:P. Di Tommaso, et al. Nextflow enables reproducible computational workflows. Nature Biotechnology 35, 316–319 (2017), <a href="https://www.nature.com/articles/nbt.3820">doi:10.1038/nbt.3820</a>.
