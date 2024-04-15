@@ -29,7 +29,7 @@ OpenMS is developed by a group of `core developers <https://openms.de/contributo
 
 * Contribute to the development by giving us your feedback about the OpenMS project on `Discord <https://discord.gg/aJyWqf6uCn>`_ or become active by `developing new tools yourself </manual/develop>`_.
 * Donate to the OpenMS project using our `opencollective <https://opencollective.com/openms>`_ account. All donations will be used strictly to fund the development of Openms’s open source software, documentation, and community.
-* Promote OpenMS either online (`e.g. on X <https://x.com/OpenMSTeam?t=aOoFOQ3nQg3vIOTTQfBBqw&s=33>`_) or in your work group.
+* Promote OpenMS either online (`e.g. on X <https://x.com/OpenMSTeam>`_) or in your work group.
 
 
 .. toctree::
