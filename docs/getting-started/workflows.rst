@@ -93,7 +93,7 @@ workflow systems designed to make workflow creation and maintenance more fun:
 
     .. grid-item-card:: TOPPAS
         :img-top: /_images/introduction/TOPPAS_logo_dark.png
-        :link: /manual/develop
+        :link: /getting-started/toppas-get-started
         :link-type: doc
         :class-card: only-dark
         :class-img-top: halfwidth

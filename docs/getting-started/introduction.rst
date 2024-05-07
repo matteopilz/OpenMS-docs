@@ -60,7 +60,7 @@ Should you be missing something you can also add new functions or classes to the
             :margin: 0
 
             .. grid-item-card:: :material-regular:`account_tree;5em;sd-text-info` **Workflow Editor**
-                :link: /getting-started/webapps
+                :link: /getting-started/workflows
                 :link-type: doc
 
                 **Use a supported workflow editor to create or run predefined workflows.**
